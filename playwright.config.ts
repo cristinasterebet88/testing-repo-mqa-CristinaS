@@ -37,7 +37,12 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        /* Folosește Chrome instalat dacă nu ai rulat `npx playwright install`. */
+        channel: 'chrome',
+        headless: false
+      },
     },
 
     // {
