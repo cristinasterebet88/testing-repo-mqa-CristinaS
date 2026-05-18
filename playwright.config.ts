@@ -31,19 +31,19 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    testIdAttribute: 'data-testid',
   },
-
+ 
   /* Configure projects for major browsers */
   projects: [
-    {
-      name: 'chromium',
-      use: {
-        ...devices['Desktop Chrome'],
-        /* Folosește Chrome instalat dacă nu ai rulat `npx playwright install`. */
-        channel: 'chrome',
-        headless: false
-      },
+  {
+    name: 'chromium',
+    use: {
+      browserName: 'chromium',
+      channel: 'chrome',
+      headless: false,
     },
+  },
 
     // {
     //   name: 'firefox',
