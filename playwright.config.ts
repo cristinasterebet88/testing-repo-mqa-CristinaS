@@ -34,16 +34,18 @@ export default defineConfig({
     testIdAttribute: 'data-testid',
     headless: false,
   },
-
+ 
   /* Configure projects for major browsers */
   projects: [
-    {
-      name: 'chrome',
-      use: {
-        browserName: 'chromium',
-        channel: 'chrome',
-      },
+  {
+    name: 'chromium',
+    use: {
+      browserName: 'chromium',
+      channel: 'chrome',
+      headless: false,
     },
+  },
+
     // {
     //   name: 'firefox',
     //   use: { ...devices['Desktop Firefox'] },
