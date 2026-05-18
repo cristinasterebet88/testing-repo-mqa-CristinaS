@@ -10,7 +10,9 @@
     "ng": "ng",
     "start": "ng serve",
     "format": "prettier --write \"src/**/*.{ts,html,scss,json}\" \"tests/**/*.ts\" \"*.ts\"",
-    "format:check": "prettier --check \"src/**/*.{ts,html,scss,json}\" \"tests/**/*.ts\" \"*.ts\""
+    "format:check": "prettier --check \"src/**/*.{ts,html,scss,json}\" \"tests/**/*.ts\" \"*.ts\"",
+    "playwright:install": "playwright install",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@angular/animations": "^14.2.12",
@@ -69,7 +71,7 @@
     "@angular/language-service": "14.2.12",
     "@faker-js/faker": "^10.3.0",
     "@fortawesome/fontawesome-free": "^5.2.0",
-    "@playwright/test": "^1.58.2",
+    "@playwright/test": "^1.60.0",
     "@types/leaflet": "1.2.3",
     "@types/node": "^12.12.70",
     "allure-playwright": "^3.6.0",
