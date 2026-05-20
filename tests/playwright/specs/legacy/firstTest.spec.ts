@@ -21,7 +21,7 @@ test.describe('Form Layouts page', () => {
     expect(inputValue).toEqual('test2@test.com');
 
     //locator assertion
-    await expect(usingTheGridEmailInput).toHaveValue('test2@test.com');
+    await expect(usingTheGridEmailInput).toHaveValue('test@test.com');
   });
 
   test('radio buttons', async ({ page }) => {

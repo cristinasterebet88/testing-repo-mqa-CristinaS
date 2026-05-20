@@ -252,7 +252,7 @@ test.describe('Form Layouts page', () => {
       // await submitBasicFormButton.press('ArrowRight');
       // await submitBasicFormButton.press('PageDown');
       // await submitBasicFormButton.press('PageUp');
-      await usingTheGridEmailInput.fill('test2@test.com');
+      await usingTheGridEmailInput.fill('test@test.com');
       await usingTheGridEmailInput.press('ControlOrMeta+A');
     });
   });

@@ -73,7 +73,11 @@ test.describe('Form Layouts page', () => {
 
         for (const checkbox of checkboxes) {
             const state = await checkbox.isChecked();
-            await checkbox.setChecked(!state, { force: true });
+            if (state) {
+                await checkbox.uncheck();
+            } else {
+                await checkbox.check();
+            }
         }
 
         await expect(rememberMeCheckbox).not.toBeChecked();
