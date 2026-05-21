@@ -1,11 +1,16 @@
 import { Locator, Page } from 'playwright';
 import { expect } from 'playwright/test';
 
-export type WindowButton = 'windowFormButton' | 'windowWithTemplateButton' | 'windowWithBackdropButton' | 'windowWithoutBackdropButton';
+export type WindowButton =
+    | 'windowFormButton'
+    | 'windowWithTemplateButton'
+    | 'windowWithBackdropButton'
+    | 'windowWithoutBackdropButton';
 
 export class WindowComponent {
     readonly page: Page;
-    readonly card: Locator;
+    readonly container: Locator;
+    readonly openedWindow: Locator;
 
     readonly windowFormCard: Locator;
     readonly windowWithoutBackdropCard: Locator;
@@ -18,6 +23,8 @@ export class WindowComponent {
 
     constructor(page: Page) {
         this.page = page;
+        this.container = this.page.getByTestId('window');
+        this.openedWindow = this.page.locator('nb-window');
 
         this.windowFormCard = this.page.locator('nb-card', { hasText: 'Window Form' });
         this.windowFormButton = this.windowFormCard.getByTestId('open-window-form');
@@ -25,7 +32,9 @@ export class WindowComponent {
 
         this.windowWithoutBackdropCard = this.page.locator('nb-card', { hasText: 'Window Without Backdrop' });
         this.windowWithBackdropButton = this.windowWithoutBackdropCard.getByTestId('open-window-with-backdrop');
-        this.windowWithoutBackdropButton = this.windowWithoutBackdropCard.getByTestId('open-window-without-bakdrop');
+        this.windowWithoutBackdropButton = this.windowWithoutBackdropCard.getByTestId(
+            'open-window-without-backdrop',
+        );
 
         this.getOptionButton = (key) => {
             switch (key) {
@@ -38,19 +47,24 @@ export class WindowComponent {
                 case 'windowWithoutBackdropButton':
                     return this.windowWithoutBackdropButton;
             }
-        }
+        };
     }
 
     async assertVisibility(visibility = true) {
         if (visibility) {
+            await expect(this.container).toBeVisible();
             await expect(this.windowFormCard).toBeVisible();
+            await expect(this.windowWithoutBackdropCard).toBeVisible();
         } else {
-            await expect(this.windowFormCard).not.toBeVisible();
+            await expect(this.container).not.toBeVisible();
         }
     }
 
-    async clickButon(Key: WindowButton) {
-        await this.getOptionButton(Key).click();
+    async clickButton(key: WindowButton) {
+        const button = this.getOptionButton(key);
+        await expect(button).toBeVisible();
+        await expect(this.openedWindow).not.toBeAttached();
+        await button.click();
+        await expect(this.openedWindow).toBeVisible();
     }
-
 }

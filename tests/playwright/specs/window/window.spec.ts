@@ -10,7 +10,7 @@ test.describe('Window page', () => {
     });
 
     await test.step('Open window form', async () => {
-      await onWindowComponent.clickButon('windowFormButton');
+      await onWindowComponent.clickButton('windowFormButton');
     });
 
   });
@@ -24,7 +24,7 @@ test.describe('Window page', () => {
     });
 
     await test.step('Open window with template', async () => {
-      await onWindowComponent.clickButon('windowWithTemplateButton');
+      await onWindowComponent.clickButton('windowWithTemplateButton');
     });
 
   });
@@ -38,7 +38,7 @@ test.describe('Window page', () => {
     });
 
     await test.step('Open window with backdrop button', async () => {
-      await onWindowComponent.clickButon('windowWithBackdropButton');
+      await onWindowComponent.clickButton('windowWithBackdropButton');
     });
 
   });
@@ -52,7 +52,7 @@ test.describe('Window page', () => {
     });
 
     await test.step('Open window without backdrop button', async () => {
-      await onWindowComponent.clickButon('windowWithoutBackdropButton');
+      await onWindowComponent.clickButton('windowWithoutBackdropButton');
     });
 
   });
