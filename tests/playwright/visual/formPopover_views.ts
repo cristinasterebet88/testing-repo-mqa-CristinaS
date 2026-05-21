@@ -6,12 +6,12 @@ import {
 
 test.describe('Form Popover — visual', () => {
     test('full page', async ({ page, onApplicationURLs }) => {
-        await onApplicationURLs.navigateToFormsLayouts();
+        await onApplicationURLs.navigateToPopover();
         await argosFullScreenshot({ page, snapshotName: 'forms/popover-full' });
     });
 
     test('Popover Position Component', async ({ page, onApplicationURLs, onPopoverPositionComponent }) => {
-        await onApplicationURLs.navigateToFormsLayouts();
+        await onApplicationURLs.navigateToPopover();
         await onPopoverPositionComponent.assertVisibility(true);
         await argosComponentScreenshot({
             page,
