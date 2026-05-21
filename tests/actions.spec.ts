@@ -6,11 +6,13 @@ async function checkboxes(page: Page) {
       .locator('nb-card', { hasText: 'Inline form' })
       .getByRole('checkbox', { name: 'Remember me' }),
     page
-      .locator('nb-card', { hasText: 'Basic Form' })
-      .getByRole('checkbox', { name: 'Check me out' }),
+      .getByTestId('basic-form-card')
+      .getByTestId('check-me-out-checkbox')
+      .locator('input[type="checkbox"]'),
     page
-      .locator('nb-card', { hasText: 'Horizontal form' })
-      .getByRole('checkbox', { name: 'Remember me' }),
+      .getByTestId('horizontal-form-card')
+      .getByTestId('check-me-out-checkbox')
+      .locator('input[type="checkbox"]'),
   ];
 }
 
@@ -38,7 +40,7 @@ test.describe('Form Layouts page', () => {
     await usingTheGridEmailInput.fill('test@test.com');
 
     //web-first assertion
-    await expect(usingTheGridEmailInput).toHaveValue('test2@test.com');
+    await expect(usingTheGridEmailInput).toHaveValue('test@test.com');
 
     //generic assertion
     // const inputValue = await usingTheGridEmailInput.inputValue();
@@ -91,7 +93,7 @@ test.describe('Form Layouts page', () => {
       await submitBasicFormButton.click({ modifiers: ['Shift'] });
       await submitBasicFormButton.click({ clickCount: 6 });
       await submitBasicFormButton.click({ force: true });
-      await submitBasicFormButton.click({ position: { x: 100, y: 100 } });
+      await submitBasicFormButton.click({ position: { x: 45, y: 20 } });
       await submitBasicFormButton.dblclick();
     });
 
@@ -181,12 +183,14 @@ test.describe('Form Layouts page', () => {
       .getByRole('checkbox', { name: 'Remember me' });
 
     const basicFormComponent = page
-      .locator('nb-card', { hasText: 'Basic Form' })
-      .getByRole('checkbox', { name: 'Check me out' });
+      .getByTestId('basic-form-card')
+      .getByTestId('check-me-out-checkbox')
+      .locator('input[type="checkbox"]');
 
     const horizontalFormComponent = page
-      .locator('nb-card', { hasText: 'Horizontal form' })
-      .getByRole('checkbox', { name: 'Remember me' });
+      .getByTestId('horizontal-form-card')
+      .getByTestId('check-me-out-checkbox')
+      .locator('input[type="checkbox"]');
 
     await test.step('check both radios are unchecked', async () => {
       await expect(rememberMeCheckbox).not.toBeChecked();

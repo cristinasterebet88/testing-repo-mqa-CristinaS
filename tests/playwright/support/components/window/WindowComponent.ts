@@ -25,7 +25,7 @@ export class WindowComponent {
 
         this.windowWithoutBackdropCard = this.page.locator('nb-card', { hasText: 'Window Without Backdrop' });
         this.windowWithBackdropButton = this.windowWithoutBackdropCard.getByTestId('open-window-with-backdrop');
-        this.windowWithoutBackdropButton = this.windowWithoutBackdropCard.getByTestId('open-window-without-backdrop');
+        this.windowWithoutBackdropButton = this.windowWithoutBackdropCard.getByTestId('open-window-without-bakdrop');
 
         this.getOptionButton = (key) => {
             switch (key) {
