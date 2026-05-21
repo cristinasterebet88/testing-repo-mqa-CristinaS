@@ -48,36 +48,40 @@ test.describe('Form Layouts page', () => {
     test('checkbox buttons - action', async ({ page }) => {
         const rememberMeCheckbox = page
             .locator('nb-card', { hasText: 'Inline form' })
-            .getByRole('checkbox', { name: 'Remember me' });
+            .locator('nb-checkbox', { hasText: 'Remember me' });
 
         const basicFormComponent = page
             .locator('nb-card', { hasText: 'Basic form' })
-            .getByRole('checkbox', { name: 'Check me out' });
+            .locator('nb-checkbox', { hasText: 'Check me out' });
 
         const horizontalFormComponent = page
             .locator('nb-card', { hasText: 'Horizontal form' })
-            .getByRole('checkbox', { name: 'Remember me' });
+            .locator('nb-checkbox', { hasText: 'Remember me' });
 
         const checkboxes = [rememberMeCheckbox, basicFormComponent, horizontalFormComponent];
 
         for (const checkbox of checkboxes) {
-            await checkbox.check({ force: true });
-            await expect(checkbox).toBeChecked();
+            const input = checkbox.locator('input[type="checkbox"]');
+            if (!(await input.isChecked())) {
+                await checkbox.click();
+            }
+            await expect(input).toBeChecked();
         }
 
-        await checkboxes[1].setChecked(false, { force: true });
+        if (await checkboxes[1].locator('input[type="checkbox"]').isChecked()) {
+            await checkboxes[1].click();
+        }
 
-        await expect(checkboxes[0]).toBeChecked();
-        await expect(checkboxes[1]).not.toBeChecked();
-        await expect(checkboxes[2]).toBeChecked();
+        await expect(checkboxes[0].locator('input[type="checkbox"]')).toBeChecked();
+        await expect(checkboxes[1].locator('input[type="checkbox"]')).not.toBeChecked();
+        await expect(checkboxes[2].locator('input[type="checkbox"]')).toBeChecked();
 
         for (const checkbox of checkboxes) {
-            const state = await checkbox.isChecked();
-            await checkbox.setChecked(!state, { force: true });
+            await checkbox.click();
         }
 
-        await expect(rememberMeCheckbox).not.toBeChecked();
-        await expect(basicFormComponent).toBeChecked();
-        await expect(horizontalFormComponent).not.toBeChecked();
+        await expect(rememberMeCheckbox.locator('input[type="checkbox"]')).not.toBeChecked();
+        await expect(basicFormComponent.locator('input[type="checkbox"]')).toBeChecked();
+        await expect(horizontalFormComponent.locator('input[type="checkbox"]')).not.toBeChecked();
     });
 });

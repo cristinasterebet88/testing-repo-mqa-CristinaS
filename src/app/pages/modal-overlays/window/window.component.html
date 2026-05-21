@@ -1,11 +1,12 @@
+<div data-testid="window">
 <div class="row">
   <div class="col-md-12 col-lg-12 col-xxxl-6">
     <nb-card>
       <nb-card-header>Window Form</nb-card-header>
       <nb-card-body>
-        <button (click)="openWindowForm()" nbButton>Open window form</button>
+        <button (click)="openWindowForm()" nbButton data-testid="open-window-form">Open window form</button>
 
-        <button (click)="openWindow(contentTemplate)" nbButton>Open window with template</button>
+        <button (click)="openWindow(contentTemplate)" nbButton data-testid="open-window-with-template">Open window with template</button>
       </nb-card-body>
     </nb-card>
   </div>
@@ -14,12 +15,13 @@
     <nb-card>
       <nb-card-header>Window Without Backdrop</nb-card-header>
       <nb-card-body>
-        <button (click)="openWindow(contentTemplate)" nbButton>Open window with backdrop</button>
+        <button (click)="openWindow(contentTemplate)" nbButton data-testid="open-window-with-backdrop">Open window with backdrop</button>
 
-        <button (click)="openWindowWithoutBackdrop()" nbButton>Open window without backdrop</button>
+        <button (click)="openWindowWithoutBackdrop()" nbButton data-testid="open-window-without-backdrop">Open window without backdrop</button>
       </nb-card-body>
     </nb-card>
   </div>
+</div>
 </div>
 
 <ng-template #contentTemplate let-data>

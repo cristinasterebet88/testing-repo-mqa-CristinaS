@@ -4,15 +4,21 @@ import { UsingGridComponent } from '../support/components/forms/UsingGridCompone
 import { FormWithoutLabelsComponent } from '../support/components/forms/FormWithoutLabelsComponent';
 import { BlockFormComponent } from '../support/components/forms/BlockFormComponent';
 import { HorizontalFormComponent } from '../support/components/forms/HorizontalFormComponent';
+import { WindowComponent } from '../support/components/window/WindowComponent';
+import { PopoverPositionComponent } from '../support/components/popover/PopoverPositionComponent';
 import { expect, test as base } from 'playwright/test';
 import { ApplicationURLs } from '../support/components/main/applicationURLs';
+import { PopoverTemplateComponent } from '../support/components/popover/PopoverTemplateComponent';
 
 type MyFixtures = {
-  onBasicForm: BasicFormComponent;
-  onGridForm: UsingGridComponent;
+  onBasicFormComponent: BasicFormComponent;
+  onUsingGridComponent: UsingGridComponent;
   onFormWithoutLabelsForm: FormWithoutLabelsComponent;
   onBlockFormComponent: BlockFormComponent;
-  HorizontalFormComponent: HorizontalFormComponent;
+  onHorizontalFormComponent: HorizontalFormComponent;
+  onWindowComponent: WindowComponent;
+  onPopoverPositionComponent: PopoverPositionComponent;
+  onPopoverTemplateComponent: PopoverTemplateComponent;
   onApplicationURLs: ApplicationURLs;
 };
 
@@ -23,11 +29,14 @@ const createFixture = <T>(Component: new (page: Page) => T) => {
 };
 
 export const test = base.extend<MyFixtures>({
-  onBasicForm: [createFixture(BasicFormComponent), { scope: 'test' }],
-  onGridForm: [createFixture(UsingGridComponent), { scope: 'test' }],
+  onBasicFormComponent: [createFixture(BasicFormComponent), { scope: 'test' }],
+  onUsingGridComponent: [createFixture(UsingGridComponent), { scope: 'test' }],
   onFormWithoutLabelsForm: [createFixture(FormWithoutLabelsComponent), { scope: 'test' }],
   onBlockFormComponent: [createFixture(BlockFormComponent), { scope: 'test' }],
-  HorizontalFormComponent: [createFixture(HorizontalFormComponent), { scope: 'test' }],
+  onHorizontalFormComponent: [createFixture(HorizontalFormComponent), { scope: 'test' }],
+  onWindowComponent: [createFixture(WindowComponent), { scope: 'test' }],
+  onPopoverPositionComponent: [createFixture(PopoverPositionComponent), { scope: 'test' }],
+  onPopoverTemplateComponent: [createFixture(PopoverTemplateComponent), { scope: 'test' }],
   onApplicationURLs: [createFixture(ApplicationURLs), { scope: 'test' }],
 });
 

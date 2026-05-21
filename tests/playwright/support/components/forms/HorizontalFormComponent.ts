@@ -2,7 +2,7 @@ import { Locator, Page } from 'playwright';
 import { BaseFormComponent } from './BaseFormComponent';
 import { expect } from 'playwright/test';
 
-export class BlockFormComponent extends BaseFormComponent {
+export class HorizontalFormComponent extends BaseFormComponent {
     readonly usingHorizontalEmailInput: Locator;
     readonly usingHorizontalPasswordInput: Locator;
     readonly usingHorizontalCheckMeOut: Locator;

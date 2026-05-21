@@ -1,12 +1,13 @@
+<div data-testid="form-layouts">
 <div class="row">
   <div class="col-md-12">
     <nb-card class="inline-form-card">
       <nb-card-header>Inline form</nb-card-header>
       <nb-card-body>
-        <form class="form-inline">
+        <form class="form-inline" (submit)="$event.preventDefault()">
           <input type="text" nbInput fullWidth placeholder="Jane Doe" />
           <input type="text" nbInput fullWidth placeholder="Email" />
-          <nb-checkbox>Remember me</nb-checkbox>
+          <nb-checkbox data-testid="remember-me-checkbox">Remember me</nb-checkbox>
           <button type="submit" nbButton status="primary" data-testid="submit-button">
             Submit
           </button>
@@ -21,7 +22,7 @@
     <nb-card data-testid="grid-form-card">
       <nb-card-header>Using the Grid</nb-card-header>
       <nb-card-body>
-        <form>
+        <form (submit)="$event.preventDefault()">
           <div class="form-group row">
             <label for="inputEmail1" class="label col-sm-3 col-form-label">Email</label>
             <div class="col-sm-9">
@@ -72,7 +73,7 @@
     <nb-card data-testid="form-without-labels-card">
       <nb-card-header>Form without labels</nb-card-header>
       <nb-card-body>
-        <form>
+        <form (submit)="$event.preventDefault()">
           <div class="form-group">
             <input type="text" nbInput fullWidth placeholder="Recipients" data-testid="recipients-input"/>
           </div>
@@ -92,7 +93,7 @@
     <nb-card data-testid="basic-form-card">
       <nb-card-header>Basic form</nb-card-header>
       <nb-card-body>
-        <form>
+        <form (submit)="$event.preventDefault()">
           <div class="form-group">
             <label for="exampleInputEmail1" class="label">Email address</label>
             <input
@@ -167,7 +168,7 @@
     <nb-card data-testid="horizontal-form-card">
       <nb-card-header>Horizontal form</nb-card-header>
       <nb-card-body>
-        <form class="form-horizontal">
+        <form class="form-horizontal" (submit)="$event.preventDefault()">
           <div class="form-group row">
             <label for="inputEmail3" class="label col-sm-3 form-control-label">Email</label>
             <div class="col-sm-9">
@@ -182,8 +183,8 @@
           </div>
           <div class="form-group row">
             <div class="offset-sm-3 col-sm-9">
-              <div class="checkbox" data-testid="check-me-out-checkbox">
-                <nb-checkbox>Remember me</nb-checkbox>
+              <div class="checkbox">
+                <nb-checkbox data-testid="check-me-out-checkbox">Remember me</nb-checkbox>
               </div>
             </div>
           </div>
@@ -198,4 +199,5 @@
       </nb-card-body>
     </nb-card>
   </div>
+</div>
 </div>

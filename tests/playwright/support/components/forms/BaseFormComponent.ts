@@ -1,11 +1,9 @@
-import { Locator, Page } from 'playwright';
+import { Locator, Page, } from 'playwright';
 import { expect } from 'playwright/test';
 
 export abstract class BaseFormComponent {
   readonly page: Page;
-
   readonly card: Locator;
-
   readonly submitButton: Locator;
 
   protected constructor(page: Page, cardTestId: string) {

@@ -92,12 +92,7 @@ test.describe('Form Layouts page', () => {
     const basicFormComponent = page.locator('nb-card', { hasText: 'Basic Form' });
     await expect(basicFormComponent).toBeVisible();
 
-    const submitBasicFormButton = basicFormComponent.getByRole('button', { name: 'Submit' });
-    await expect(submitBasicFormButton).toBeVisible();
-
-    ////////////////////////
-
-    const submitBasicFormButtonByTestId = page.getByTestId('submitBasicFormButton');
+    const submitBasicFormButtonByTestId = basicFormComponent.getByTestId('submit-button');
     await expect(submitBasicFormButtonByTestId).toBeVisible();
   });
 
