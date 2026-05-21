@@ -3,7 +3,7 @@ import { test } from '../../fixtures/base_fixture';
 test.describe('Form Layouts page', () => {
   test('user should be able to complete the Basic form and submit it', async ({
     onApplicationURLs,
-    onBasicForm,
+    onBasicFormComponent,
   }) => {
     const testEmail = 'test@test.com';
     const testPassword = 'password';
@@ -13,23 +13,23 @@ test.describe('Form Layouts page', () => {
     });
 
     await test.step('Complete the basic form', async () => {
-      await onBasicForm.assertVisibility(true);
-      await onBasicForm.fillEmail(testEmail);
-      await onBasicForm.fillPassword(testPassword);
+      await onBasicFormComponent.assertVisibility(true);
+      await onBasicFormComponent.fillEmail(testEmail);
+      await onBasicFormComponent.fillPassword(testPassword);
     });
 
     await test.step("Check the 'Check me out' checkbox", async () => {
-      await onBasicForm.toggleCheckMeOut();
+      await onBasicFormComponent.toggleCheckMeOut();
     });
 
     await test.step('Submit the form', async () => {
-      await onBasicForm.submit();
+      await onBasicFormComponent.submit();
     });
   });
 
   test('user should be able to complete the Grid form and submit it', async ({
     onApplicationURLs,
-    onGridForm,
+    onUsingGridComponent,
   }) => {
     const testEmail = 'test@test.com';
     const testPassword = 'password';
@@ -39,14 +39,14 @@ test.describe('Form Layouts page', () => {
     });
 
     await test.step('Complete the grid form', async () => {
-      await onGridForm.assertVisibility(true);
-      await onGridForm.fillEmail(testEmail);
-      await onGridForm.fillPassword(testPassword);
-      await onGridForm.selectOption('option2');
+      await onUsingGridComponent.assertVisibility(true);
+      await onUsingGridComponent.fillEmail(testEmail);
+      await onUsingGridComponent.fillPassword(testPassword);
+      await onUsingGridComponent.selectOption('option2');
     });
 
     await test.step('Submit the form', async () => {
-      await onGridForm.submit();
+      await onUsingGridComponent.submit();
     });
   });
 
