@@ -12,8 +12,9 @@
   "format": "prettier --write \"src/**/*.{ts,html,scss,json}\" \"tests/**/*.ts\" \"*.ts\"",
   "format:check": "prettier --check \"src/**/*.{ts,html,scss,json}\" \"tests/**/*.ts\" \"*.ts\"",
   "test:visual": "playwright test --config playwright-visual.config.ts",
-  "test:visual:ui": "playwright test --config playwright-visual.config.ts --ui"
-},
+  "test:visual:ui": "playwright test --config playwright-visual.config.ts --ui",
+  "test:api": "playwright test --config playwright-api.config.ts"
+  },
   "dependencies": {
     "@angular/animations": "^14.2.12",
     "@angular/cdk": "14.2.7",
